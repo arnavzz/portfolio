@@ -1,0 +1,27 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+
+# Vite-specific cache and temporary files
+.vite
+.vite-ssg-temp
+
+# Log files
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# Local environment variables (sensitive data)
+.env
+.env.local
+.env.*.local
+
+# IDE / Editor configuration files
+.vscode/
+.idea/
+
+# Operating System files
+.DS_Store
+Thumbs.db
