@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Icon from './Icon';
+import DarkModeToggle from './DarkModeToggle';
 import { ICONS } from '../constants/icons';
 
 const Header = () => {
@@ -45,7 +46,7 @@ const Header = () => {
                         </span>
                     </div>
                     
-                    <nav className="hidden md:flex space-x-8">
+                    <nav className="hidden md:flex space-x-8 items-center">
                         {['About', 'Projects', 'Skills', 'Contact'].map((item) => (
                             <button
                                 key={item}
@@ -57,14 +58,15 @@ const Header = () => {
                                 {item}
                             </button>
                         ))}
+                        <DarkModeToggle />
                     </nav>
                     
                     <button className="md:hidden p-2 text-slate-300" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                        <Icon path={ICONS.MENU} className="w-6 h-6" />
                     </button>
                 </div>
-                 {isMobileMenuOpen && (
-                    <nav className="md:hidden mt-4 glass-effect rounded-lg p-4">
+                {isMobileMenuOpen && (
+                    <nav className="md:hidden mt-4 glass-effect rounded-lg p-4 space-y-2">
                         {['About', 'Projects', 'Skills', 'Contact'].map((item) => (
                             <button
                                 key={item}
@@ -74,6 +76,7 @@ const Header = () => {
                                 {item}
                             </button>
                         ))}
+                        <DarkModeToggle />
                     </nav>
                 )}
             </div>
