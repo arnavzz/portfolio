@@ -41,7 +41,7 @@ const Contact = () => {
                         </div>
                         <div className="mt-10">
                             {/* The resume path points to the public folder */}
-                            <a href="/assets/documents/resume.pdf" download className="contact-icon-link inline-flex items-center space-x-3 bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent/90 transition-colors font-semibold">
+                            <a href="/assets/documents/Resume_Arnav Khamparia.pdf" download className="contact-icon-link inline-flex items-center space-x-3 bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent/90 transition-colors font-semibold">
                                 <Icon path={ICONS.DOWNLOAD} className="w-5 h-5" />
                                 <span>Download Resume</span>
                             </a>
