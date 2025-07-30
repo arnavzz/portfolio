@@ -6,10 +6,16 @@ html {
     scroll-behavior: smooth;
 }
 
+html.theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f172a; /* dark */
-    color: #cbd5e1; /* slate-300 */
+    @apply font-inter bg-light text-slate-900;
+}
+
+html.dark body {
+    @apply bg-dark text-slate-300;
 }
 
 /* --- Animation --- */
@@ -95,10 +101,10 @@ body {
 
 /* --- General Styling --- */
 .section-bg-dark {
-     background-color: #0f172a;
+    @apply bg-slate-100 dark:bg-dark;
 }
 .section-bg-light {
-    background-color: #1e293b;
+    @apply bg-slate-200 dark:bg-slate-800;
 }
 
 .nav-link {

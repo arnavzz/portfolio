@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useEffect, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
+const Header = lazy(() => import('./components/Header'));
+const Hero = lazy(() => import('./components/Hero'));
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   // Logic for the fade-in animation on scroll
@@ -23,17 +26,29 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Helmet>
+        <title>Arnav Khamparia - Machine Learning Engineer</title>
+      </Helmet>
+      <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <main>
+                <Hero />
+                <About />
+                <Projects />
+                <Skills />
+                <Contact />
+              </main>
+            }
+          />
+        </Routes>
+        <Footer />
+      </Suspense>
+    </Router>
   );
 }
 
