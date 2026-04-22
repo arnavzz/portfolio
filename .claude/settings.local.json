@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:arnavkhamparia.netlify.app)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(cp:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "figma"
+  ]
+}

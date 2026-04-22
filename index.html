@@ -1,13 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arnav Khamparia - Machine Learning Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arnav Khamparia | AI/ML Engineer</title>
+
+  <!-- Favicon: AK monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0f1e'/><text x='16' y='22' font-family='monospace' font-size='14' font-weight='bold' fill='%2310b981' text-anchor='middle'>AK</text></svg>" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Arnav Khamparia | AI/ML Engineer" />
+  <meta property="og:description" content="Building AI systems that work in production. LLM pipelines, RAG architectures, real-time voice agents, and a published Springer paper." />
+  <meta property="og:url"         content="https://arnavkhamparia.netlify.app" />
+  <meta property="og:image"       content="https://arnavkhamparia.netlify.app/assets/images/profile.png" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="Arnav Khamparia | AI/ML Engineer" />
+  <meta name="twitter:description" content="Building AI systems that work in production." />
+  <meta name="twitter:image"      content="https://arnavkhamparia.netlify.app/assets/images/profile.png" />
+
+  <!-- SEO -->
+  <meta name="description" content="Arnav Khamparia — AI/ML Engineer building production LLM systems, RAG pipelines, and voice agents. Currently at OTO Capital. Published in Springer 2024." />
+  <meta name="keywords"    content="AI Engineer, ML Engineer, LLM, RAG, LangGraph, Prompt Engineering, Gemini API, Python, Deep Learning" />
+  <meta name="author"      content="Arnav Khamparia" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0f1e;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Hide system cursor on desktop */
+    @media (pointer: fine) {
+      *, a, button { cursor: none !important; }
+    }
+
+    /* ── Keyframes ── */
+    @keyframes pulse-dot {
+      0%   { box-shadow: 0 0 0 0   rgba(16,185,129,0.7); }
+      70%  { box-shadow: 0 0 0 8px rgba(16,185,129,0);   }
+      100% { box-shadow: 0 0 0 0   rgba(16,185,129,0);   }
+    }
+    @keyframes blink {
+      0%,49%  { opacity:1; } 50%,100% { opacity:0; }
+    }
+    @keyframes bounce {
+      0%,100% { transform:translateY(0); } 50% { transform:translateY(8px); }
+    }
+    @keyframes glow-ring {
+      0%,100% { box-shadow:0 0 0 3px #10b981,0 0 28px rgba(16,185,129,0.25); }
+      50%      { box-shadow:0 0 0 3px #10b981,0 0 56px rgba(16,185,129,0.42); }
+    }
+    @keyframes marquee {
+      from { transform:translateX(0); } to { transform:translateX(-50%); }
+    }
+    @keyframes float-badge {
+      0%,100% { transform:translateY(0)   rotate(-1deg); opacity:0.5; }
+      50%      { transform:translateY(-11px) rotate(1deg);  opacity:0.32; }
+    }
+    @keyframes waveform-bar {
+      0%   { transform:scaleY(0.35); } 100% { transform:scaleY(1.15); }
+    }
+    @keyframes stat-pulse {
+      0%,100% { opacity:0.12; } 50% { opacity:0.18; }
+    }
+
+    /* ── Clip-path text wipe ── */
+    section h2 {
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 0.9s cubic-bezier(0.22,1,0.36,1) !important;
+    }
+    section h2.wipe-in {
+      clip-path: inset(0 0% 0 0) !important;
+    }
+
+    /* ── Section divider ── */
+    .section-divider {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+    .section-divider span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+    .section-divider hr {
+      flex: 1; border: none;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* ── Magnetic btn transition ── */
+    .magnetic-btn { transition: transform 0.12s ease, box-shadow 0.2s !important; }
+    .magnetic-btn.releasing { transition: transform 0.55s cubic-bezier(0.23,1,0.32,1), box-shadow 0.2s !important; }
+
+    /* ── Stat section ── */
+    .stat-fullbleed {
+      background: #060b18;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 80px 28px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .stat-fullbleed .stat-bg-num {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(8rem, 28vw, 22rem);
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #10b981;
+      opacity: 0.07;
+      user-select: none;
+      pointer-events: none;
+      animation: stat-pulse 4s ease-in-out infinite;
+      line-height: 1;
+    }
+    .stat-fullbleed .stat-label {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(1.8rem, 5vw, 3.6rem);
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #10b981;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .stat-fullbleed .stat-sub {
+      position: relative; z-index: 1;
+      font-size: 12px;
+      color: #334155;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .desktop-nav     { display:none !important; }
+      .mobile-menu-btn { display:flex !important; }
+      .floating-badge  { display:none !important; }
+      .about-grid      { grid-template-columns:1fr !important; gap:40px !important; }
+      .timeline-wrap .timeline-center-line { left:16px !important; transform:none !important; }
+      .timeline-wrap .timeline-row         { flex-direction:column !important; padding-left:44px !important; }
+      .timeline-wrap .timeline-slot-left,
+      .timeline-wrap .timeline-slot-right  { width:100% !important; justify-content:flex-start !important; }
+      .timeline-wrap .timeline-slot-left > div,
+      .timeline-wrap .timeline-slot-right > div { padding:0 !important; }
+      .timeline-wrap .timeline-row > div:nth-child(2) { position:absolute; left:9px; margin-top:24px; }
+      .contact-grid { grid-template-columns:1fr !important; gap:40px !important; }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn { display:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Three.js -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- Components -->
+  <script type="text/babel" src="src/CursorComp.jsx"></script>
+  <script type="text/babel" src="src/CornerBadge.jsx"></script>
+  <script type="text/babel" src="src/HeaderComp.jsx"></script>
+  <script type="text/babel" src="src/HeroComp.jsx"></script>
+  <script type="text/babel" src="src/MarqueeComp.jsx"></script>
+  <script type="text/babel" src="src/AboutComp.jsx"></script>
+  <script type="text/babel" src="src/ExperienceComp.jsx"></script>
+  <script type="text/babel" src="src/ProjectsComp.jsx"></script>
+  <script type="text/babel" src="src/SkillsComp.jsx"></script>
+  <script type="text/babel" src="src/RecognitionComp.jsx"></script>
+  <script type="text/babel" src="src/ContactComp.jsx"></script>
+
+  <!-- App -->
+  <script type="text/babel">
+    /* ── Divider ── */
+    function Divider({ num, label }) {
+      return (
+        <div style={{ padding:'0 0' }}>
+          <div className="section-divider">
+            <span>──</span>
+            <span>{label}</span>
+            <hr />
+            <span>{num}</span>
+          </div>
+        </div>
+      );
+    }
+
+    /* ── Full-bleed stat ── */
+    function StatSection() {
+      const ref = React.useRef(null);
+      const [v, setV] = React.useState(false);
+      React.useEffect(() => {
+        const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setV(true); obs.disconnect(); } }, { threshold: 0.3 });
+        if (ref.current) obs.observe(ref.current);
+        return () => obs.disconnect();
+      }, []);
+
+      return (
+        <div ref={ref} className="stat-fullbleed" style={{ opacity: v ? 1 : 0, transition: 'opacity 0.8s ease' }}>
+          <div className="stat-bg-num">0.93</div>
+          <div className="stat-label">0.93</div>
+          <div className="stat-sub">Dice Score · Liver Tumor Segmentation · Springer 2024</div>
+          <div style={{ marginTop: 28, fontSize: 12.5, color: '#1e293b', fontFamily: 'JetBrains Mono, monospace' }}>
+            V-Net · MONAI Framework · Medical AI
+          </div>
+        </div>
+      );
+    }
+
+    /* ── Footer ── */
+    function Footer() {
+      return (
+        <footer style={{ background:'#060b18', borderTop:'1px solid rgba(255,255,255,0.05)', padding:'32px 28px' }}>
+          <div style={{ maxWidth:1100, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16 }}>
+            <div>
+              <span style={{ fontSize:15, fontWeight:700, color:'#f1f5f9' }}>Arnav Khamparia</span>
+              <span style={{ fontSize:12, color:'#10b981', fontFamily:'JetBrains Mono, monospace', marginLeft:12 }}>AI/ML Engineer</span>
+            </div>
+            <div style={{ fontSize:11.5, color:'#1e293b', fontFamily:'JetBrains Mono, monospace' }}>© 2025 · Built with React · Netlify</div>
+            <div style={{ display:'flex', gap:18 }}>
+              {[
+                { href:'https://github.com/arnavzz', d:'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22' },
+                { href:'https://linkedin.com/in/arnavkhamparia/', d:'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z' },
+                { href:'mailto:arnav.worko@gmail.com', d:'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' },
+              ].map(({ href, d }) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+                  style={{ color:'#334155', transition:'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color='#10b981'}
+                  onMouseLeave={e => e.currentTarget.style.color='#334155'}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d={d}/>
+                    {href.includes('linkedin') && <><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></>}
+                    {href.includes('gmail') && <polyline points="22,6 12,13 2,6"/>}
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <CursorComp />
+          <CornerBadge />
+          <HeaderComp />
+          <main>
+            <HeroComp />
+            <MarqueeComp />
+            <Divider num="01" label="About" />
+            <AboutComp />
+            <Divider num="02" label="Experience" />
+            <ExperienceComp />
+            <Divider num="03" label="Projects" />
+            <ProjectsComp />
+            <Divider num="04" label="Skills" />
+            <SkillsComp />
+            <Divider num="05" label="Research" />
+            <StatSection />
+            <RecognitionComp />
+            <Divider num="06" label="Contact" />
+            <ContactComp />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    /* ── Dynamic page title on scroll ── */
+    const sectionTitles = {
+      hero:         'Arnav Khamparia | AI/ML Engineer',
+      about:        'About | Arnav Khamparia',
+      experience:   'Experience | Arnav Khamparia',
+      projects:     'Projects | Arnav Khamparia',
+      skills:       'Skills | Arnav Khamparia',
+      publications: 'Research | Arnav Khamparia',
+      contact:      'Contact | Arnav Khamparia',
+    };
+    window.addEventListener('scroll', () => {
+      const ids = Object.keys(sectionTitles);
+      const pos = window.scrollY + 140;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && pos >= el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
+          if (document.title !== sectionTitles[id]) document.title = sectionTitles[id];
+          break;
+        }
+      }
+    }, { passive: true });
+
+    /* ── Post-render: clip-path wipe on all section h2s ── */
+    setTimeout(() => {
+      document.querySelectorAll('section h2').forEach(el => {
+        // Force opacity 1, let clip-path handle the reveal
+        el.style.setProperty('opacity','1','important');
+        el.style.setProperty('transform','none','important');
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) { el.classList.add('wipe-in'); obs.disconnect(); }
+        }, { threshold: 0.35 });
+        obs.observe(el);
+      });
+    }, 600);
+
+    /* ── Magnetic buttons ── */
+    setTimeout(() => {
+      document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          btn.classList.remove('releasing');
+          const r  = btn.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width  / 2);
+          const dy = e.clientY - (r.top  + r.height / 2);
+          btn.style.transform = `translate(${dx * 0.28}px, ${dy * 0.28}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.classList.add('releasing');
+          btn.style.transform = 'translate(0,0)';
+        });
+      });
+    }, 800);
+  </script>
+</body>
 </html>
