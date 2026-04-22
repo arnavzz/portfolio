@@ -14,7 +14,10 @@
       "Bash(taskkill:*)",
       "Bash(kill 31880)",
       "Bash(cmd:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.json)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.config.*)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.toml)"
     ]
   },
   "enableAllProjectMcpServers": true,
