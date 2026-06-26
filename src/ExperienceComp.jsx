@@ -38,7 +38,7 @@ const Badge = ({ label }) => (
   <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#10b981', padding: '3px 9px', borderRadius: 4, display: 'inline-block' }}>{label}</span>
 );
 
-function ExpCard({ role, company, duration, location, current, bullets, tech, align, showWaveform }) {
+function ExpCard({ role, company, duration, location, current, bullets, tech, align, showWaveform, promotedFrom }) {
   const dir = align === 'left' ? 'left' : 'right';
   const [ref, style] = useFadeDir(dir);
   const [cardRef, cardVisible] = (() => {
@@ -60,12 +60,25 @@ function ExpCard({ role, company, duration, location, current, bullets, tech, al
           <div>
             <div style={{ fontSize: 17, fontWeight: 700, color: '#f1f5f9' }}>{role}</div>
             <div style={{ fontSize: 14, color: '#10b981', fontWeight: 600, marginTop: 2 }}>{company}</div>
+            {promotedFrom && (
+              <div style={{ fontSize: 11.5, color: '#475569', marginTop: 5, display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'JetBrains Mono, monospace' }}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                Promoted from {promotedFrom}
+              </div>
+            )}
           </div>
           {current && (
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 99, padding: '4px 12px', fontSize: 11, color: '#10b981', fontFamily: 'JetBrains Mono, monospace', flexShrink: 0 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 1.8s infinite' }} />
-              CURRENT
-            </span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 99, padding: '4px 12px', fontSize: 11, color: '#10b981', fontFamily: 'JetBrains Mono, monospace' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 1.8s infinite' }} />
+                CURRENT
+              </span>
+              {promotedFrom && (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 99, padding: '4px 12px', fontSize: 10.5, color: '#f59e0b', fontFamily: 'JetBrains Mono, monospace' }}>
+                  PROMOTED
+                </span>
+              )}
+            </div>
           )}
         </div>
 
@@ -104,13 +117,14 @@ function ExperienceComp() {
 
   const experiences = [
     {
-      role: 'AI Product Intern',
+      role: 'AI Product Engineer',
       company: 'OTO Capital',
       duration: 'Nov 2025 – Present',
       location: 'Bengaluru, India',
       current: true,
       align: 'left',
       showWaveform: true,
+      promotedFrom: 'AI Product Intern · Apr 2026',
       bullets: [
         'Engineered prompt systems for a production AI Voice Agent built on Google Gemini Live API for ultra-low-latency real-time borrower conversations.',
         'Designed an AI-driven outreach orchestration engine that autonomously selects the optimal channel (AI Call / WhatsApp / SMS / Manual) per borrower based on behavioral signals.',
