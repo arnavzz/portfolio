@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:arnavkhamparia.netlify.app)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(cp:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(netstat -ano)",
+      "Bash(taskkill:*)",
+      "Bash(kill 31880)",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.json)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.config.*)",
+      "Bash(ls C:/Users/Aadi/Desktop/portfolio/*.toml)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "figma"
+  ]
+}
